@@ -1,3 +1,3 @@
 # Plex Media Server - Rename content using Filebot CLI
 
-Mass rename your Plex Media Server Library using Filebot
+Rename your Plex Media Server content using Filebot at scale
