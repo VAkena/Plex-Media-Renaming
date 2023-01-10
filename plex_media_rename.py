@@ -33,22 +33,12 @@ def get_file_count(dir_path: str, pattern: str) -> int:
     return count
 
 
-def files_before_renaming():
-    logging.info("Here are those file(s)")
-    # Log media files before tagging
-    files_found = glob.glob('./*.m*')
-
-    for f in files_found:
-        logging.info(f)
-
-
-def files_after_renaming():
-    logging.info("Here are your new file(s)")
-    # Log media files before tagging
-    files_found = glob.glob('./*.m*')
-
-    for f in files_found:
-        logging.info(f)
+def get_files():
+    media = re.compile(r'.*\.(mp4|mkv)')
+    for root, dirs, files in os.walk(os.getcwd()):
+        for file in files:
+            if media.match(file):
+                logging.info(file)
 
 
 def run_filebot_scan():
@@ -61,13 +51,18 @@ def run_filebot_scan():
 
 def main():
     count = get_file_count("./", ".*\.(mp4|mkv)")
+
     logging.info("We found %d files", count)
 
-    files_before_renaming()
+    logging.info("Here are those file(s)")
+
+    get_files()
 
     run_filebot_scan()
 
-    files_after_renaming()
+    logging.info("Here are your new file(s)")
+
+    get_files()
 
 
 if __name__ == "__main__":
