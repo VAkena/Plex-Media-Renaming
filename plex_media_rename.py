@@ -8,10 +8,8 @@
 # Use the Filebot commandline documentation to customise the naming scheme to your liking
 
 import os
-import fnmatch
 import re
 import logging
-import glob
 
 # Configure logging to file
 logging.basicConfig(level=logging.DEBUG, filename="log.log",
